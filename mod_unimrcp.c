@@ -1060,7 +1060,7 @@ static switch_status_t speech_channel_open(speech_channel_t *schannel, profile_t
 	while (schannel->state == SPEECH_CHANNEL_CLOSED) {
 		if (switch_thread_cond_timedwait(schannel->cond, schannel->mutex, SPEECH_CHANNEL_TIMEOUT_USEC) == SWITCH_STATUS_TIMEOUT && !warned) {
 			warned = 1;
-			switch_log_printf(SWITCH_CHANNEL_UUID_LOG(schannel->session_uuid), SWITCH_LOG_WARNING, "(%s) MRCP session has not opened after %d ms\n", schannel->name, SPEECH_CHANNEL_TIMEOUT_USEC / (1000));
+			switch_log_printf(SWITCH_CHANNEL_UUID_LOG(schannel->session_uuid), SWITCH_LOG_WARNING, "(%s) MRCP session has not opened after %d ms,break\n", schannel->name, SPEECH_CHANNEL_TIMEOUT_USEC / (1000));
 			status = SWITCH_STATUS_FALSE;
 			goto done;
 		}
